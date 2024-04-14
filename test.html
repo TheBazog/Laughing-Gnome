@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gnome Page</title>
+<style>
+  body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #gnome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  #gnome img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  #gnome-text {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 150px); /* Adjust this value based on your image width */
+    color: white;
+    font-family: "EB Garamond", serif;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, font-size 0.3s ease-in-out, color 1s ease-in-out;
+    cursor: pointer;
+  }
+  #gnome-text:hover {
+    font-size: 22px;
+    color: red;
+  }
+</style>
+</head>
+<body>
+<div id="gnome">
+  <img src="gnome.png" alt="Gnome">
+</div>
+<div id="gnome-text">Heeheeheehoo, this is a Gnome!</div>
+<audio id="gnome-audio" src="gnome-laugh.mp3"></audio>
+<script>
+  setTimeout(function() {
+    document.getElementById('gnome').style.opacity = 1;
+    setTimeout(function() {
+      document.getElementById('gnome-text').style.opacity = 1;
+    }, 2000);
+  }, 3000);
+  
+  document.getElementById('gnome-text').addEventListener('click', function() {
+    var audio = document.getElementById('gnome-audio');
+    audio.play();
+    audio.onended = function() {
+      window.close();
+    };
+  });
+</script>
+</body>
+</html>
